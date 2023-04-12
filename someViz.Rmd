@@ -1,0 +1,23 @@
+---
+title: "Untitled"
+author: "Irene Foster"
+date: "2023-04-11"
+output: html_document
+---
+
+```{r}
+library(tidyverse)
+```
+
+```{r}
+timeSeries <- read.csv("hyperaktiv/activity_data/patient_activity_05.csv", sep = ";")
+```
+
+```{r}
+ggplot(timeSeries, aes(x = TIMESTAMP, y = ACTIVITY, group = 1)) + geom_point() + geom_line()
+```
+
+```{r}
+patientInfo <- read.csv("hyperaktiv/patient_info.csv", sep = ";")
+```
+
