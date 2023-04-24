@@ -3,47 +3,51 @@ Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: FinalReport.aux
 The style file: mdpi.bst
 Database file #1: mybibfile.bib
-Warning--string name "jul" is undefined
---line 25 of file mybibfile.bib
-You've used 3 entries,
+Warning--I'm ignoring noauthor_attention-deficithyperactivity_nodate's extra "journal" field
+--line 127 of file mybibfile.bib
+Warning--I'm ignoring noauthor_adult_nodate's extra "journal" field
+--line 151 of file mybibfile.bib
+Warning--I'm ignoring noauthor_attention-deficithyperactivity_nodate2's extra "journal" field
+--line 177 of file mybibfile.bib
+You've used 6 entries,
             2865 wiz_defined-function locations,
-            585 strings with 4652 characters,
-and the built_in function-call counts, 1058 in all, are:
-= -- 87
-> -- 49
-< -- 1
-+ -- 20
-- -- 14
-* -- 94
-:= -- 178
-add.period$ -- 9
-call.type$ -- 3
-change.case$ -- 3
-chr.to.int$ -- 3
-cite$ -- 3
-duplicate$ -- 53
-empty$ -- 99
-format.name$ -- 17
-if$ -- 218
+            593 strings with 5211 characters,
+and the built_in function-call counts, 1499 in all, are:
+= -- 131
+> -- 55
+< -- 2
++ -- 28
+- -- 16
+* -- 96
+:= -- 220
+add.period$ -- 14
+call.type$ -- 6
+change.case$ -- 6
+chr.to.int$ -- 6
+cite$ -- 9
+duplicate$ -- 75
+empty$ -- 164
+format.name$ -- 21
+if$ -- 331
 int.to.chr$ -- 1
-int.to.str$ -- 3
-missing$ -- 4
-newline$ -- 19
+int.to.str$ -- 6
+missing$ -- 1
+newline$ -- 30
 num.names$ -- 9
-pop$ -- 21
+pop$ -- 57
 preamble$ -- 0
-purify$ -- 3
+purify$ -- 6
 quote$ -- 0
-skip$ -- 23
+skip$ -- 55
 stack$ -- 0
-substring$ -- 46
-swap$ -- 10
+substring$ -- 24
+swap$ -- 14
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 18
+type$ -- 42
 warning$ -- 0
-while$ -- 9
+while$ -- 7
 width$ -- 0
-write$ -- 41
-(There was 1 warning)
+write$ -- 67
+(There were 3 warnings)

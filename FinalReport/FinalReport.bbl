@@ -1,25 +1,43 @@
 \begin{thebibliography}{-------}
 \providecommand{\natexlab}[1]{#1}
 
-\bibitem[Bertrand-Krajewski \em{et~al.}(1998)Bertrand-Krajewski, Chebbo, and
-  Saget]{bertrand-krajewski_distribution_1998}
-Bertrand-Krajewski, J.L.; Chebbo, G.; Saget, A.
-\newblock Distribution of pollutant mass vs volume in stormwater discharges and
-  the first flush phenomenon.
-\newblock {\em Water Research} {\bf 1998}, {\em 32},~2341--2356.
+\bibitem[Elmaghraby and Stephanie~Garayalde(2022)]{noauthor_what_nodate}
+Elmaghraby, R.; Stephanie~Garayalde, S.
+\newblock What is {ADHD}?
+\newblock
+  \url{https://www.psychiatry.org:443/patients-families/adhd/what-is-adhd},
+  2022.
 
-\bibitem[Leutnant \em{et~al.}(2016)Leutnant, Muschalla, and
-  Uhl]{leutnant_stormwater_2016}
-Leutnant, D.; Muschalla, D.; Uhl, M.
-\newblock Stormwater {Pollutant} {Process} {Analysis} with {Long}-{Term}
-  {Online} {Monitoring} {Data} at {Micro}-{Scale} {Sites}.
-\newblock {\em Water} {\bf 2016}, {\em 8},~299.
-\newblock 00000,
-  doi:{\changeurlcolor{black}\href{https://doi.org/10.3390/w8070299}{\detokenize{10.3390/w8070299}}}.
+\bibitem[noa(2022)]{noauthor_attention-deficithyperactivity_nodate}
+Attention-{Deficit}/{Hyperactivity} {Disorder}.
+\newblock
+  \url{https://www.nimh.nih.gov/health/topics/attention-deficit-hyperactivity-disorder-adhd},
+   2022.
 
-\bibitem[Gujer(2008)]{gujer_systems_2008}
-Gujer, W.
-\newblock {\em Systems {Analysis} for {Water} {Technology}}; Springer-Verlag:
-  Berlin, Heidelberg, Germany,  2008.
+\bibitem[noa(2021)]{noauthor_attention-deficithyperactivity_nodate2}
+Attention-{Deficit}/{Hyperactivity} {Disorder} in {Adults}: {What} {You} {Need}
+  to {Know}.
+\newblock
+  \url{https://www.nimh.nih.gov/health/publications/adhd-what-you-need-to-know},
+   2021.
+
+\bibitem[noa(2023)]{noauthor_adult_nodate}
+Adult attention-deficit/hyperactivity disorder ({ADHD}) - {Symptoms} and
+  causes.
+\newblock
+  \url{https://www.mayoclinic.org/diseases-conditions/adult-adhd/symptoms-causes/syc-20350878},
+   2023.
+
+\bibitem[Katzman \em{et~al.}(2017)Katzman, Bilkey, Chokka, Fallu, and
+  Klassen]{pmid28830387}
+Katzman, M.A.; Bilkey, T.S.; Chokka, P.R.; Fallu, A.; Klassen, L.J.
+\newblock {{A}dult {A}{D}{H}{D} and comorbid disorders: clinical implications
+  of a dimensional approach}.
+\newblock {\em BMC Psychiatry} {\bf 2017}, {\em 17},~302.
+
+\bibitem[Contributors(2023)]{contributors_diagnosing_nodate}
+Contributors, W.E.
+\newblock Diagnosing {ADHD} in {Adults}: {How} {Adults} {Are} {Tested} for
+  {ADHD},  2023.
 
 \end{thebibliography}

@@ -154,7 +154,75 @@ line with the research paper.{]}}
 \hypertarget{introduction}{%
 \section{Introduction}\label{introduction}}
 
-\emph{ADD}
+Attention-deficit/hyperactivity disorder (ADHD) is a complex
+neurodevelopmental disorder that shares symptoms with many other
+conditions, and it is often misdiagnosed. It is estimated that 8.4\% of
+children and 2.5\% of adults have ADHD, and presentation and assessment
+are different in the two groups (\citet{noauthor_what_nodate}). There
+are three main types of ADHD: inattentive presentation,
+hyperactive/impulsive presentation, and combined presentation
+(\citet{noauthor_what_nodate}). The inattentive type is characterized by
+difficulty staying on task, sustaining focus, and staying organized
+(\citet{noauthor_attention-deficithyperactivity_nodate}). Hyperactivity
+is excessive movement and may present as restlessness or talking too
+much in adults (\citet{noauthor_attention-deficithyperactivity_nodate}).
+Impulsivity is when a person acts without thinking and may manifest as
+desire for immediate rewards or the inability to delay gratification
+(\citet{noauthor_attention-deficithyperactivity_nodate}). The combined
+type is when both symptoms of the inattentive type and the
+hyperactive/impulsive type are present
+(\citet{noauthor_attention-deficithyperactivity_nodate}). ADHD can
+impact individuals in many areas of their life such as
+academic/professional, interpersonal relationships, and daily
+functioning (\citet{noauthor_what_nodate}). In adults it can have far
+reaching detrimental effects and lead to poor self-worth, sensitivity
+towards criticism, and increased self-criticism
+(\citet{noauthor_what_nodate}). However, sometimes ADHD is not
+identified until a person is an adult if the symptoms were not
+recognized, they had mild ADHD, or they managed sufficiently well until
+demands of college/work
+(\citet{noauthor_attention-deficithyperactivity_nodate2}). Due to the
+harmful consequences ADHD can lead to, it is important that it is
+diagnosed and treated.
+
+There are many challenges to diagnosing ADHD, particularly in adults.
+Adult ADHD symptoms are sometimes harder to discern than ADHD symptoms
+in children (\citet{noauthor_adult_nodate}). Combining this with the
+fact that adult ADHD symptoms are similar to those in other conditions
+can make diagnosis difficult (\citet{noauthor_adult_nodate}). Stress,
+illness, and other mental conditions such as anxiety or mood disorders
+can all have symptoms that are similar to ADHD
+(\citet{noauthor_adult_nodate},
+\citet{noauthor_attention-deficithyperactivity_nodate2}. For example,
+emotional dysregulation present in ADHD can be diagnosed with a mood
+disorder or ADHD symptoms can be covered up by substance abuse
+(\citet{pmid28830387}). Physicians are also usually more familiar with
+mood and anxiety disorders, leading to misdiagnosis and delays in ADHD
+treatment (\citet{pmid28830387}). Additionally, other mental health
+conditions such as anxiety, mood, and substance use disorders are common
+in adults with ADHD
+(\citet{noauthor_attention-deficithyperactivity_nodate2}). Studies have
+shown that 18.6\% to 53.3\% of people with ADHD have depression and
+almost 50\% of people with ADHD have an anxiety disorder
+(\citet{pmid28830387}). Some researchers suggest that in some cases
+stress, depression, and anxiety may be manifesting due to undiagnosed or
+untreated ADHD (\citet{pmid28830387}). These factors make ADHD difficult
+to recognize and treat, leading to an under-diagnosis and
+under-treatment of adult ADHD (\citet{pmid28830387}). Due to the
+extensive effects ADHD can have, it is important that it is properly
+diagnosed and treated.
+
+There is no specific procedure to diagnose ADHD and psychiatrists,
+neurologists, primary care doctors, clinical psychologists, or clinical
+social workers can all diagnose adults with ADHD
+(\citet{contributors_diagnosing_nodate}). Steps to getting a diagnosis
+may include a physician using behavioral questionnaires to ask about the
+impacts ADHD has, possible symptoms present in childhood, talking to a
+parent or partner, and psychological tests
+(\citet{contributors_diagnosing_nodate}). They may also test for
+learning disabilities, other mental health conditions, or physical
+illnesses to rule these options out
+(\citet{contributors_diagnosing_nodate}).
 
 \hypertarget{methods}{%
 \section{Methods}\label{methods}}
@@ -171,7 +239,17 @@ words.{]}
 \hypertarget{data-cleaning}{%
 \subsection{Data Cleaning}\label{data-cleaning}}
 
-{[}Comment on any data cleaning considerations. Varies in length.{]}
+In the Hyperaktiv data set the time series data for each subject is
+stored in a separate CSV file. To analyze the data, I combined all of
+the activity CSVs into one file, keeping track of which subject each
+data point came from. \emph{TODO: add more detail if needed} There were
+108 subjects, yet only some had activity data. I only used subjects with
+activity data, which reduced the data set to 83.
+
+\emph{TODO: comment on if I make all activity csvs same length, cleaning
+time series (seasonality, get rid of noise, etc.)}
+
+\emph{TODO: Add about heart rate if you get there}
 
 \hypertarget{variables-of-interest}{%
 \subsection{Variables of Interest}\label{variables-of-interest}}
