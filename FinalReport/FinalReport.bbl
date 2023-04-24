@@ -1,0 +1,25 @@
+\begin{thebibliography}{-------}
+\providecommand{\natexlab}[1]{#1}
+
+\bibitem[Bertrand-Krajewski \em{et~al.}(1998)Bertrand-Krajewski, Chebbo, and
+  Saget]{bertrand-krajewski_distribution_1998}
+Bertrand-Krajewski, J.L.; Chebbo, G.; Saget, A.
+\newblock Distribution of pollutant mass vs volume in stormwater discharges and
+  the first flush phenomenon.
+\newblock {\em Water Research} {\bf 1998}, {\em 32},~2341--2356.
+
+\bibitem[Leutnant \em{et~al.}(2016)Leutnant, Muschalla, and
+  Uhl]{leutnant_stormwater_2016}
+Leutnant, D.; Muschalla, D.; Uhl, M.
+\newblock Stormwater {Pollutant} {Process} {Analysis} with {Long}-{Term}
+  {Online} {Monitoring} {Data} at {Micro}-{Scale} {Sites}.
+\newblock {\em Water} {\bf 2016}, {\em 8},~299.
+\newblock 00000,
+  doi:{\changeurlcolor{black}\href{https://doi.org/10.3390/w8070299}{\detokenize{10.3390/w8070299}}}.
+
+\bibitem[Gujer(2008)]{gujer_systems_2008}
+Gujer, W.
+\newblock {\em Systems {Analysis} for {Water} {Technology}}; Springer-Verlag:
+  Berlin, Heidelberg, Germany,  2008.
+
+\end{thebibliography}

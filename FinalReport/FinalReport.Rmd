@@ -1,0 +1,158 @@
+---
+title: Full title of the paper (Capitalized)
+author:
+  - name: Irene Foster
+    affil: 1,*
+    orcid: 0000-0001-9681-4786
+affiliation:
+  - num: 1
+    address: |
+      Smith College - 
+      Department of Statistical & Data Sciences
+      Northampton, MA, USA
+
+# firstnote to eighthnote
+#firstnote: |
+#  Current address: Updated affiliation
+correspondence: |
+  ifoster25@smith.edu
+#journal: water
+type: article
+status: submit
+bibliography: mybibfile.bib
+#appendix: appendix.tex
+abstract: |
+  [Usually, 150-200 words overview of the research paper you have conducted – includes short introduction to the research question, review to methods, review of key results, conclusion for the results in line with the research paper.] 
+keywords: |
+  ADHD; behavioral activity; machine learning; time series
+# acknowledgement: |
+#   All sources of funding of the study should be disclosed. Please clearly 
+#   indicate grants that you have received in support of your research work. 
+#   Clearly state if you received funds for covering the costs to publish in open 
+#   access.
+conflictsofinterest: |
+  The authors declare no conflict of 
+  interest.
+#sampleavailability: |
+#  Samples of the compounds ...... are available from the authors.
+# abbreviations:
+#   - short: MDPI
+#     long: Multidisciplinary Digital Publishing Institute
+  # - short: DOAJ
+  #   long: Directory of open access journals
+  # - short: TLA
+  #   long: Three letter acronym
+  # - short: LD 
+  #   long: linear dichroism
+output: rticles::mdpi_article
+---
+
+# Introduction
+
+*ADD*
+
+# Methods
+
+## Dataset
+
+[Contrast this to what would have been your ideal dataset. How did you arrive at choosing this dataset. Provide details on the dataset, size, gender split and count, age, how it was collected, ethical concerns, etc. Also provide details on data collection and access. Usually 100-200 words.]
+
+## Data Cleaning
+
+[Comment on any data cleaning considerations. Varies in length.]
+
+## Variables of Interest
+
+[Describe the variables that you are using in your datasets. Describe the rationale for using these variables. Varies in length.]
+
+## Other Important Features
+
+[Also comment on other things which are relevant to your research paper. Varies in length.]
+
+##Data Analyses
+
+[What analyses are you doing why. Varies in length.]
+
+# Results
+
+[Summary of results analyses 1]
+
+[Add visualizations from analyses. Varies in length.]
+
+[Summary of results analyses 2]
+
+[Add visualizations from analyses. Varies in length.]
+
+# Discussion
+
+[Explain what your results mean in the context of the literature cited in the introduction. Minimum of 750 words.]
+
+*potential issue - diagnosis is still coming from people*
+
+# Future Directions
+
+[How could someone continue the work? Around 150-200 words.]
+
+# Personal Reflection
+
+[What was your original research question? Why did you have to deviate? What ideal dataset would be recommend collecting? How was this process of developing a research paper? 250 words]
+
+# Code availability
+
+All analysis code for this article is available at: https://github.com/i-m-foster/sds300np-ireneFoster 
+
+# Acknowledgements
+
+[Mention who you would like to thank. Any grants or people. Varies in length.]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Bulleted lists look like this:
+
+* First bullet
+* Second bullet
+* Third bullet
+
+Numbered lists can be added as follows:
+
+1. First item
+2. Second item
+3. Third item
+
+The text continues here.
+
+All figures and tables should be cited in the main text as Figure 1, Table 1, etc.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=3 cm]{logo-mdpi}
+\caption{This is a figure, Schemes follow the same formatting. If there are multiple panels, they should be listed as: (\textbf{a}) Description of what is contained in the first panel. (\textbf{b}) Description of what is contained in the second panel. Figures should be placed in the main text near to the first time they are cited. A caption on a single line should be centered.}
+\end{figure}
+
+
+\begin{table}[H]
+\caption{This is a table caption. Tables should be placed in the main text near to the first time they are cited.}
+\centering
+%% \tablesize{} %% You can specify the fontsize here, e.g.  \tablesize{\footnotesize}. If commented out \small will be used.
+\begin{tabular}{ccc}
+\toprule
+\textbf{Title 1}	& \textbf{Title 2}	& \textbf{Title 3}\\
+\midrule
+entry 1		& data			& data\\
+entry 2		& data			& data\\
+\bottomrule
+\end{tabular}
+\end{table}
+
