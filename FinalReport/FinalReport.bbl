@@ -38,6 +38,26 @@ Katzman, M.A.; Bilkey, T.S.; Chokka, P.R.; Fallu, A.; Klassen, L.J.
 \bibitem[Contributors(2023)]{contributors_diagnosing_nodate}
 Contributors, W.E.
 \newblock Diagnosing {ADHD} in {Adults}: {How} {Adults} {Are} {Tested} for
-  {ADHD},  2023.
+  {ADHD}.
+\newblock \url{https://www.webmd.com/add-adhd/diagnosing-adhd-adults},  2023.
+
+\bibitem[Gualtieri and Johnson(2005)]{gualtieri_adhd_2005}
+Gualtieri, C.T.; Johnson, L.G.
+\newblock {ADHD}: {Is} {Objective} {Diagnosis} {Possible}?
+\newblock {\em Psychiatry (Edgmont)} {\bf 2005}, {\em 2},~44--53.
+
+\bibitem[Dalsgaard \em{et~al.}(2012)Dalsgaard, Humlum, Nielsen, and
+  Simonsen]{dalsgaard_relative_2012}
+Dalsgaard, S.; Humlum, M.K.; Nielsen, H.S.; Simonsen, M.
+\newblock Relative standards in {ADHD} diagnoses: {The} role of specialist
+  behavior.
+\newblock {\em Economics Letters} {\bf 2012}, {\em 117},~663--665.
+\newblock
+  doi:{\changeurlcolor{black}\href{https://doi.org/https://doi.org/10.1016/j.econlet.2012.08.008}{\detokenize{https://doi.org/10.1016/j.econlet.2012.08.008}}}.
+
+\bibitem[Stanborough(2022)]{noauthor_what_2022}
+Stanborough, R.J.
+\newblock What to {Know} {About} {Adult} {ADHD} {Diagnosis}.
+\newblock \url{https://www.healthline.com/health/adult-adhd-diagnosis},  2022.
 
 \end{thebibliography}

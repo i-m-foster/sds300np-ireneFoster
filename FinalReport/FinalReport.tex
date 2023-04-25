@@ -72,7 +72,7 @@
 
 %=================================================================
 % Full title of the paper (Capitalized)
-\Title{Full title of the paper (Capitalized)}
+\Title{Predicting ADHD Using Activity Time Series Data}
 
 % Authors, for the paper (add full first names)
 \Author{Irene
@@ -103,10 +103,10 @@ Northampton, MA, USA; \\
 % Simple summary
 
 % Abstract (Do not insert blank lines, i.e. \\)
-\abstract{{[}Usually, 150-200 words overview of the research paper you
-have conducted -- includes short introduction to the research question,
-review to methods, review of key results, conclusion for the results in
-line with the research paper.{]}}
+\abstract{\textbf{TODO} {[}Usually, 150-200 words overview of the
+research paper you have conducted -- includes short introduction to the
+research question, review to methods, review of key results, conclusion
+for the results in line with the research paper.{]}}
 
 % Keywords
 \keyword{ADHD; behavioral activity; machine learning; time series}
@@ -224,11 +224,84 @@ learning disabilities, other mental health conditions, or physical
 illnesses to rule these options out
 (\citet{contributors_diagnosing_nodate}).
 
+A large part of the ADHD diagnosis process includes objective
+information: the patient's perspective of themselves in behavioral
+questionnaires, the perspective of parents and significant others, and
+the opinion/view of the clinician. Rating scales, which are often used
+in diagnosis, are systematic but they are not objective
+(\citet{gualtieri_adhd_2005}). Raters are prone to let their view of the
+subject and the outcome they want skew their results and different
+raters often differ in their view of the same subject
+(\citet{gualtieri_adhd_2005}). Patients are also evaluated by a
+clinician during diagnosis, which can be a primary care physician in the
+United States (\citet{contributors_diagnosing_nodate}). Recent research
+has indicated in the United States children who are older for their
+grade level are less likely to be diagnosed with ADHD
+(\citet{dalsgaard_relative_2012}). However in Denmark only specialists
+diagnose ADHD and these results were not replicated
+(\citet{dalsgaard_relative_2012}). This supports the hypothesis that
+non-specialists diagnosing ADHD could be the reason for the lower rate
+of ADHD diagnosis in children who are older for their grade
+(\citet{dalsgaard_relative_2012}). Clinicians may also be subject to
+bias that affects their diagnoses of ADHD and there is evidence for
+racial and gender disparities in diagnosis (\citet{noauthor_what_2022}).
+Boys are more likely to be diagnosed with ADHD in childhood than girls,
+though this may be due to different presentation of symptoms or
+differences in building compensation skills
+(\citet{noauthor_what_2022}). Black, Hispanic, and Asian children and
+adults received ADHD diagnoses less often then their non-Hispanic white
+counterparts (\citet{noauthor_what_2022}). In addition to rating scales
+and clinical evaluations, computerized tests can also be used to help
+diagnose ADHD. A computer test alone is not enough for a diagnosis, but
+can supplement other diagnostic tools (\citet{gualtieri_adhd_2005}).
+Continuous performance tests are used in ADHD diagnoses and test
+vigilance or sustained attention (\citet{gualtieri_adhd_2005}). However,
+there is limited correlation between CPT results and rating scales
+(\citet{gualtieri_adhd_2005}). Additionally, the most common CPTs have
+about a 85\% success rate in indicating ADHD in children that have been
+diagnosed with ADHD and a false positive rate of 30\% in controls
+(\citet{gualtieri_adhd_2005}). All together these make for a subjective,
+potentially inaccurate diagnostic method.
+
+Given the difficulties in diagnosing ADHD and the subjective methods
+used, it's important that researchers investigate more accurate and
+objective measures of diagnosis. \textbf{TODO: add previous research on
+other predictive algorithms}
+
+I will be continuing the research on predicting ADHD using machine
+learning methods. \textbf{TODO: add why im using activity data}
+
 \hypertarget{methods}{%
 \section{Methods}\label{methods}}
 
 \hypertarget{dataset}{%
 \subsection{Dataset}\label{dataset}}
+
+\textbf{TODO: update, add more description}
+
+I am planning to use a dataset called HYPERAKTIV, which has 103
+subjects. It contains subjects' sex, age, prescribed medications, which
+psychiatric disorders are diagnosed (including ADHD/ADD), and if
+substance abuse exists. For every subject it contains time series of
+motor activity and heart rate over a 24-hour period and the results of a
+neuropsychological computer test. Additionally, a paper was written on
+it that contains robust metadata and the researchers did some beginning
+exploratory work on the data using machine learning algorithms to
+predict ADHD. I intend to use the time series of motor activity and age,
+sex, psychiatric disorders and prescriptions medications to predict
+ADHD.
+
+I am planning to use a dataset called HYPERAKTIV, which has 103
+subjects. It contains subjects' sex, age, prescribed medications, which
+psychiatric disorders are diagnosed (including ADHD/ADD), and if
+substance abuse exists. For every subject it contains time series of
+motor activity and heart rate over a 24-hour period and the results of a
+neuropsychological computer test. Additionally, a paper was written on
+it that contains robust metadata and the researchers did some beginning
+exploratory work on the data using machine learning algorithms to
+predict ADHD. I intend to use the time series of motor activity and age,
+sex, psychiatric disorders and prescriptions medications to predict
+ADHD.
 
 {[}Contrast this to what would have been your ideal dataset. How did you
 arrive at choosing this dataset. Provide details on the dataset, size,
@@ -246,13 +319,15 @@ data point came from. \emph{TODO: add more detail if needed} There were
 108 subjects, yet only some had activity data. I only used subjects with
 activity data, which reduced the data set to 83.
 
-\emph{TODO: comment on if I make all activity csvs same length, cleaning
-time series (seasonality, get rid of noise, etc.)}
+\textbf{TODO: comment on if I make all activity csvs same length,
+cleaning time series (seasonality, get rid of noise, etc.)}
 
-\emph{TODO: Add about heart rate if you get there}
+\textbf{TODO: Add about heart rate if you get there}
 
 \hypertarget{variables-of-interest}{%
 \subsection{Variables of Interest}\label{variables-of-interest}}
+
+\textbf{TODO, also include summary stats of variables}
 
 {[}Describe the variables that you are using in your datasets. Describe
 the rationale for using these variables. Varies in length.{]}
@@ -260,10 +335,55 @@ the rationale for using these variables. Varies in length.{]}
 \hypertarget{other-important-features}{%
 \subsection{Other Important Features}\label{other-important-features}}
 
+\textbf{TODO: Researchers did some preliminary ML on dataset - discuss}
+
 {[}Also comment on other things which are relevant to your research
 paper. Varies in length.{]}
 
-\#\#Data Analyses
+\hypertarget{data-analyses}{%
+\subsection{Data Analyses}\label{data-analyses}}
+
+\textbf{TODO: this is info from draft, update with actual procedure
+taken}
+
+First, I will calculate summary statistics of the variables I'm using
+introductory data visualizations. It looks like to be compared, time
+series have to be the same length. Since the data I am using is not all
+the same length, if I am unable to find a work-around I will have to
+preprocess the data by finding the mean of the lengths and then
+truncating the series that are too long and padding the ones that are
+too short.
+
+\begin{verbatim}
+My research question involves investigating if ADHD can be predicted using motor activity. I would like to try and use different time series classification algorithms to see if this can be predicted. I will start by using ROCKET and HIVE-COTE, which are ensemble classifiers based on the time series classification algorithms mentioned next. I will then try distance-based (KNN with dynamic time warping), interval-based (TimeSeriesForest), dictionary-based (BOSS, cBOSS), Frequency-based (RISE — like TimeSeriesForest but with other features), and shapelet-based (Shapelet Transform Classifier) algorithms and compare the results (accuracy, F1, sensitivity). 
+\end{verbatim}
+
+Before modeling of performing significance tests on the data, I will
+check if the data is stationary by using a Phillips-Perron Unit Root
+Test or by plotting the sample autocorrelation function. If it isn't
+stationary I will remove the trends or seasonality from the data
+(trends: difference the data or perform least squares trend removal,
+seasonality: seasonal differencing, seasonal means, moving averages). To
+compare the two groups and see if there is a significant difference
+between them, I am going to try fitting a model to each group of the
+time series, use the model to simulate new data, and then run statistics
+on the simulated data. I am going to continue looking to see if there is
+a more direct method for comparing two groups of time series data.
+
+In addition to looking at the data as time series data, I could also try
+picking out features of the motor activity data and see if there is a
+significant difference between ADHD vs non-ADHD groups and if prediction
+is possible. I could pick out features such as averages, standard
+deviations, or number of peaks in the motor activity time series data.
+This would simplify the modeling, significance testing, and prediction
+algorithms steps since this data would be easier to use than time series
+data. It would also allow me to include confounding variables such as
+sex, age, and other psychiatric disorders because I have not yet found a
+way to include confounding variables in time series data. If I have time
+I could also include heart rate of people as a predictor variable in
+addition to motor activity to predict if people have ADHD or not. There
+has been some evidence of difference in heart rates between the two
+groups, so it could be beneficial to look at this (Hicks et al., 2021)
 
 {[}What analyses are you doing why. Varies in length.{]}
 
@@ -281,13 +401,44 @@ paper. Varies in length.{]}
 \hypertarget{discussion}{%
 \section{Discussion}\label{discussion}}
 
+\begin{itemize}
+\tightlist
+\item
+  Talk about what the results mean
+\item
+  Depending on results - could have positive impact on diagnosing ADHD
+\item
+  Diagnosis in data is still coming from people - so still has
+  subjectivity
+\item
+  Couldn't include confounding variables??
+\item
+  Most practitioners don't have the technical skill to do it themselves
+\end{itemize}
+
 {[}Explain what your results mean in the context of the literature cited
 in the introduction. Minimum of 750 words.{]}
 
-\emph{potential issue - diagnosis is still coming from people}
-
 \hypertarget{future-directions}{%
 \section{Future Directions}\label{future-directions}}
+
+\begin{itemize}
+\tightlist
+\item
+  Larger sample size
+\item
+  Combine with heart rate data
+\item
+  Could try on children
+\item
+  Make accessible to practitioners if it works
+\item
+  If I found another dataset, I could also explore if lifestyle factors
+  (maybe things such as amount of exercise, level of satisfaction,
+  income level, etc.) can be used to predict ADHD.
+\end{itemize}
+
+\textbf{TODO: change citation style}
 
 {[}How could someone continue the work? Around 150-200 words.{]}
 
@@ -309,56 +460,6 @@ All analysis code for this article is available at:
 
 {[}Mention who you would like to thank. Any grants or people. Varies in
 length.{]}
-
-Bulleted lists look like this:
-
-\begin{itemize}
-\tightlist
-\item
-  First bullet
-\item
-  Second bullet
-\item
-  Third bullet
-\end{itemize}
-
-Numbered lists can be added as follows:
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\tightlist
-\item
-  First item
-\item
-  Second item
-\item
-  Third item
-\end{enumerate}
-
-The text continues here.
-
-All figures and tables should be cited in the main text as Figure 1,
-Table 1, etc.
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=3 cm]{logo-mdpi}
-\caption{This is a figure, Schemes follow the same formatting. If there are multiple panels, they should be listed as: (\textbf{a}) Description of what is contained in the first panel. (\textbf{b}) Description of what is contained in the second panel. Figures should be placed in the main text near to the first time they are cited. A caption on a single line should be centered.}
-\end{figure}
-
-\begin{table}[H]
-\caption{This is a table caption. Tables should be placed in the main text near to the first time they are cited.}
-\centering
-%% \tablesize{} %% You can specify the fontsize here, e.g.  \tablesize{\footnotesize}. If commented out \small will be used.
-\begin{tabular}{ccc}
-\toprule
-\textbf{Title 1}    & \textbf{Title 2}  & \textbf{Title 3}\\
-\midrule
-entry 1     & data          & data\\
-entry 2     & data          & data\\
-\bottomrule
-\end{tabular}
-\end{table}
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % %% optional
