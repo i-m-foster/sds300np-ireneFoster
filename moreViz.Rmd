@@ -1,0 +1,150 @@
+---
+title: "More Viz"
+author: "Irene Foster"
+date: "2023-05-09"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r}
+library(tidyverse)
+library(zoo)
+```
+
+
+# cleaning and processing one person's activity data
+
+```{r}
+oneSeries <- read.csv("hyperaktiv/activity_data/patient_activity_08.csv", sep = ";") %>%
+  mutate("ID" = 8) %>%
+  mutate("ADHD" = as.factor(0)) %>%
+  mutate(years = parse_date_time(TIMESTAMP,  "mdYHM")) %>%
+  mutate(hours = as_hms(years)) %>%
+  arrange((hours)) %>%
+  mutate(hours2 = hour(years)) %>%
+   mutate(minutes = minute(years)) 
+
+oneSeries <- oneSeries %>%
+   group_by(hours, .drop = FALSE) %>%
+  summarise(avgAcc = mean(ACTIVITY))
+
+oneSeries %>%
+  ggplot(aes(hours, avgAcc, group = 1))+ 
+  geom_line()+
+  stat_smooth(method = "loess", formula = y ~ x, size = 1)
+```
+
+```{r}
+oneSeries3 <- oneSeries['avgAcc'] %>%
+  rollmean(30)
+
+bind <- cbind(oneSeries3, oneSeries[30:1440,'hours'])
+
+bind %>%
+  ggplot(aes(hours, avgAcc, group = 1))+ 
+  geom_line()+
+  stat_smooth(method = "loess", formula = y ~ x, size = 1)
+```
+
+```{r}
+values <- oneSeries3[,1]
+values2 <- rep(0, 1410)
+
+for (i in 2:length(values)){
+  values2[i] = values[i] - values[i-1]
+}
+
+oneSeriesDiff <- values2 %>%
+  rollmean(40, fill = NA)
+plot(oneSeriesDiff)
+
+bind2 <- cbind(oneSeriesDiff, oneSeries[30:1440,'hours'])
+
+bind2 %>%
+  ggplot(aes(hours, oneSeriesDiff, group = 1))+ 
+  geom_line()+
+  stat_smooth(method = "loess", formula = y ~ x, size = 1)
+```
+
+# cleaning and processing all time series data
+
+```{r}
+# function to process data
+# simple moving avg, difference data, simple moving avg
+timeseries2 <- read_csv("longActivityData2.csv") %>%
+  left_join(patientInfo, by = join_by("ID" == "ID")) %>%
+  mutate("ADHD" = as.factor(ADHD))  %>%
+  select(c("time", "activity", "ID", "ADHD")) %>%
+  mutate(years = parse_date_time(time,  "mdYHM")) %>%
+  mutate(hours = as_hms(years)) %>%
+  arrange((hours)) %>%
+  mutate(hours2 = hour(years)) %>%
+   mutate(minutes = minute(years)) 
+
+timeseries3 <- timeseries2 %>%
+   group_by(hours, ID) %>%
+  summarise(avgAcc = mean(activity)) %>%
+  arrange(ID) %>%
+  left_join(patientInfo, by = join_by("ID" == "ID")) %>%
+  mutate("ADHD" = as.factor(ADHD))  %>%
+  select(c("hours", "avgAcc", "ID", "ADHD"))
+```
+
+```{r}
+# function to process data
+fnrollmean <- function (x) {
+  if (length(x) < 7) {
+    rep(NA,length(x)) 
+  } else {
+    vals <- rollmean(x,30,na.pad=TRUE)
+    vals2 <- rep(NA, 1440)
+    
+    for (i in 32:length(vals2)){
+  vals2[i] = vals[i-30] - vals[i-31]
+    }
+    vals2 <- vals2 %>%
+      rollmean(40, fill = NA)
+    return(vals2)
+  }
+}
+```
+
+
+```{r}
+# reduce noise again
+timeseries4 <- timeseries3 %>%
+  select(avgAcc, ID, ADHD) %>%
+  group_by(ID) %>%
+  mutate(rollavg=fnrollmean(avgAcc))
+```
+
+
+```{r}
+# visualizing processed data
+
+timeseries4 %>% 
+  group_by(ID) %>%
+  mutate(maxtime = max(hours)) %>%
+  group_by(ADHD) %>%
+  mutate(maxtime = min(maxtime)) %>%
+  group_by(ADHD, hours) %>%
+  summarize(values = mean(rollavg)) %>%
+  ggplot(aes(hours, values, colour = ADHD, group = ADHD))+ 
+  geom_line()+
+  stat_smooth(method = "loess", formula = y ~ x, size = 1) +
+  theme_bw() +
+  xlab("Time") + ylab("Differnce in Activity Data")
+```
+
+```{r}
+timeseries5 <- timeseries4 %>%
+  select(hours, rollavg, ID) %>%
+  drop_na() 
+
+write.csv(timeseries5, "wrangledTimeData.csv")
+```
+

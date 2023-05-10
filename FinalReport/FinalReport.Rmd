@@ -1,5 +1,5 @@
 ---
-title: Predicting ADHD Using Activity Time Series Data
+title: Classifying ADHD Using Activity Time Series Data
 author:
   - name: Irene Foster
     affil: 1,*
@@ -18,12 +18,11 @@ correspondence: |
   ifoster25@smith.edu
 #journal: water
 type: article
-status: submit
+#status: submit
 bibliography: mybibfile.bib
 #appendix: appendix.tex
 abstract: |
- **TODO**
-  [Usually, 150-200 words overview of the research paper you have conducted – includes short introduction to the research question, review to methods, review of key results, conclusion for the results in line with the research paper.] 
+ ADHD is a neurodevelopmental disorder which can have wide reaching detrimental impacts on a person’s life. Due to having similar symptoms as other psychiatric disorders and often being comorbid with other psychiatric disorders ADHD is often misdiagnosed. One common diagnostic tool is behavioral questionnaires from the patient, parents, and the opinion of the clinician, which are all subjective. This paper explores using time series machine learning algorithms to classify whether people have ADHD or not to investigate a more objective ADHD diagnostic tool. The data used is the HYPERAKTIV motor activity dataset. After removing noise and trends from the time series motor activity data, eight classification algorithms from the sktime package were applied to the data. Four of the algorithms resulted in all positive classifications. The remaining four algorithms also provided low accuracy, precision, recall, and F1-scores. The highest scoring algorithm that did not provide all positive classifications has an accuracy of 0.47, precision 0f 0.55, recall of 0.50, and F1-score of 0.52. Time series classification algorithms appear to be a poor diagnostic tool for ADHD, and are outperformed by previous research.
 keywords: |
   ADHD; behavioral activity; machine learning; time series
 # acknowledgement: |
@@ -52,101 +51,192 @@ output: rticles::mdpi_article
 
 Attention-deficit/hyperactivity disorder (ADHD) is a complex neurodevelopmental disorder that shares symptoms with many other conditions, and it is often misdiagnosed. It is estimated that 8.4% of children and 2.5% of adults have ADHD, and presentation and assessment are different in the two groups (@noauthor_what_nodate). There are three main types of ADHD: inattentive presentation, hyperactive/impulsive presentation, and combined presentation (@noauthor_what_nodate). The inattentive type is characterized by difficulty staying on task, sustaining focus, and staying organized (@noauthor_attention-deficithyperactivity_nodate). Hyperactivity is excessive movement and may present as restlessness or talking too much in adults (@noauthor_attention-deficithyperactivity_nodate). Impulsivity is when a person acts without thinking and may manifest as desire for immediate rewards or the inability to delay gratification (@noauthor_attention-deficithyperactivity_nodate). The combined type is when both symptoms of the inattentive type and the hyperactive/impulsive type are present (@noauthor_attention-deficithyperactivity_nodate). ADHD can impact individuals in many areas of their life such as academic/professional, interpersonal relationships, and daily functioning (@noauthor_what_nodate). In adults it can have far reaching detrimental effects and lead to poor self-worth, sensitivity towards criticism, and increased self-criticism (@noauthor_what_nodate). However, sometimes ADHD is not identified until a person is an adult if the symptoms were not recognized, they had mild ADHD, or they managed sufficiently well until demands of college/work (@noauthor_attention-deficithyperactivity_nodate2). Due to the harmful consequences ADHD can lead to, it is important that it is diagnosed and treated.
 
-There are many challenges to diagnosing ADHD, particularly in adults. Adult ADHD symptoms are sometimes harder to discern than ADHD symptoms in children (@noauthor_adult_nodate). Combining this with the fact that adult ADHD symptoms are similar to those in other conditions can make diagnosis difficult (@noauthor_adult_nodate). Stress, illness, and other mental conditions such as anxiety or mood disorders can all have symptoms that are similar to ADHD (@noauthor_adult_nodate, @noauthor_attention-deficithyperactivity_nodate2. For example, emotional dysregulation present in ADHD can be diagnosed with a mood disorder or ADHD symptoms can be covered up by substance abuse (@pmid28830387). Physicians are also usually more familiar with mood and anxiety disorders, leading to misdiagnosis and delays in ADHD treatment (@pmid28830387). Additionally, other mental health conditions such as anxiety, mood, and substance use disorders are common in adults with ADHD (@noauthor_attention-deficithyperactivity_nodate2). Studies have shown that 18.6% to 53.3% of people with ADHD have depression and almost 50% of people with ADHD have an anxiety disorder (@pmid28830387). Some researchers suggest that in some cases stress, depression, and anxiety may be manifesting due to undiagnosed or untreated ADHD (@pmid28830387). These factors make ADHD difficult to recognize and treat, leading to an under-diagnosis and under-treatment of adult ADHD (@pmid28830387). Due to the extensive effects ADHD can have, it is important that it is properly diagnosed and treated. 
+There are many challenges to diagnosing ADHD, particularly in adults. Adult ADHD symptoms are sometimes harder to discern than ADHD symptoms in children (@noauthor_adult_nodate). Combining this with the fact that adult ADHD symptoms are similar to those in other conditions can make diagnosis difficult (@noauthor_adult_nodate). Stress, illness, and other mental conditions such as anxiety or mood disorders can all have symptoms that are similar to ADHD (@noauthor_adult_nodate, @noauthor_attention-deficithyperactivity_nodate2). For example, emotional dysregulation present in ADHD can be diagnosed with a mood disorder or ADHD symptoms can be covered up by substance abuse (@pmid28830387). Physicians are also usually more familiar with mood and anxiety disorders, leading to misdiagnosis and delays in ADHD treatment (@pmid28830387). Additionally, other mental health conditions such as anxiety, mood, and substance use disorders are common in adults with ADHD (@noauthor_attention-deficithyperactivity_nodate2). Studies have shown that 18.6% to 53.3% of people with ADHD have depression and almost 50% of people with ADHD have an anxiety disorder (@pmid28830387). Some researchers suggest that in some cases stress, depression, and anxiety may be manifesting due to undiagnosed or untreated ADHD (@pmid28830387). These factors make ADHD difficult to recognize and treat, leading to an under-diagnosis and under-treatment of adult ADHD (@pmid28830387). Due to the extensive effects ADHD can have, it is important that it is properly diagnosed and treated. 
 
-There is no specific procedure to diagnose ADHD and psychiatrists, neurologists, primary care doctors, clinical psychologists, or clinical social workers can all diagnose adults with ADHD (@contributors_diagnosing_nodate). Steps to getting a diagnosis may include a physician using behavioral questionnaires to ask about the impacts ADHD has, possible symptoms present in childhood, talking to a parent or partner, and psychological tests (@contributors_diagnosing_nodate).  They may also test for learning disabilities, other mental health conditions, or physical illnesses to rule these options out (@contributors_diagnosing_nodate). 
+The procedure to diagnose ADHD is not standardized. Psychiatrists, neurologists, primary care doctors, clinical psychologists, or clinical social workers can all diagnose adults with ADHD (@contributors_diagnosing_nodate). Steps to getting a diagnosis may include a physician using behavioral questionnaires to ask about the impacts ADHD has, possible symptoms present in childhood, talking to a parent or partner, and psychological tests (@contributors_diagnosing_nodate).  They may also test for learning disabilities, other mental health conditions, or physical illnesses to rule these options out (@contributors_diagnosing_nodate). 
 
-A large part of the ADHD diagnosis process includes objective information: the patient’s perspective of themselves in behavioral questionnaires, the perspective of parents and significant others, and the opinion/view of the clinician.  Rating scales, which are often used in diagnosis, are systematic but they are not objective (@gualtieri_adhd_2005). Raters are prone to let their view of the subject and the outcome they want skew their results and different raters often differ in their view of the same subject (@gualtieri_adhd_2005). Patients are also evaluated by a clinician during diagnosis, which can be a primary care physician in the United States (@contributors_diagnosing_nodate). Recent research has indicated in the United States children who are older for their grade level are less likely to be diagnosed with ADHD (@dalsgaard_relative_2012). However in Denmark only specialists diagnose ADHD and these results were not replicated (@dalsgaard_relative_2012). This supports the hypothesis that non-specialists diagnosing ADHD could be the reason for the lower rate of ADHD diagnosis in children who are older for their grade (@dalsgaard_relative_2012). Clinicians may also be subject to bias that affects their diagnoses of ADHD and there is evidence for racial and gender disparities in diagnosis (@noauthor_what_2022). Boys are more likely to be diagnosed with ADHD in childhood than girls, though this may be due to different presentation of symptoms or differences in building compensation skills (@noauthor_what_2022). Black, Hispanic, and Asian children and adults received ADHD diagnoses less often then their non-Hispanic white counterparts (@noauthor_what_2022). In addition to rating scales and clinical evaluations, computerized tests can also be used to help diagnose ADHD. A computer test alone is not enough for a diagnosis, but can supplement other diagnostic tools (@gualtieri_adhd_2005). Continuous performance tests are used in ADHD diagnoses and test vigilance or sustained attention (@gualtieri_adhd_2005). However, there is limited correlation between CPT results and rating scales (@gualtieri_adhd_2005). Additionally, the most common CPTs have about a 85% success rate in indicating ADHD in children that have been diagnosed with ADHD and a false positive rate of 30% in controls (@gualtieri_adhd_2005). All together these make for a subjective, potentially inaccurate diagnostic method. 
+A large part of the ADHD diagnosis process includes subjective information: the patient’s perspective of themselves in behavioral questionnaires, the perspective of parents and significant others, and the opinion/view of the clinician.  Rating scales, which are often used in diagnosis, are systematic but they are not objective (@gualtieri_adhd_2005). Raters are prone to let their view of the subject and the outcome they want skew their results and different raters often differ in their view of the same subject (@gualtieri_adhd_2005). Patients are also evaluated by a clinician during diagnosis, which can be a primary care physician in the United States (@contributors_diagnosing_nodate). Recent research has indicated in the United States children who are older for their grade level are less likely to be diagnosed with ADHD (@dalsgaard_relative_2012). However in Denmark, where only specialists diagnose ADHD, these results were not replicated (@dalsgaard_relative_2012). This supports the hypothesis that non-specialists diagnosing ADHD could be the reason for the lower rate of ADHD diagnosis in children who are older for their grade (@dalsgaard_relative_2012). Clinicians may also be subject to bias that affects their diagnoses of ADHD and there is evidence for racial and gender disparities in diagnosis (@noauthor_what_2022). Boys are more likely to be diagnosed with ADHD in childhood than girls, though this may be due to different presentation of symptoms or differences in building compensation skills (@noauthor_what_2022). Black, Hispanic, and Asian children and adults received ADHD diagnoses less often then their non-Hispanic white counterparts (@noauthor_what_2022). In addition to rating scales and clinical evaluations, computerized tests can also be used to help diagnose ADHD. A computer test alone is not enough for a diagnosis, but can supplement other diagnostic tools (@gualtieri_adhd_2005). Continuous performance tests (CPTs) are used in ADHD diagnoses and test vigilance or sustained attention (@gualtieri_adhd_2005). However, there is limited correlation between CPT results and rating scales (@gualtieri_adhd_2005). Additionally, the most common CPTs have about a 85% success rate in indicating ADHD in children that have been diagnosed with ADHD and a false positive rate of 30% in controls (@gualtieri_adhd_2005). All together these make for a subjective, potentially inaccurate diagnostic method. 
 
-Given the difficulties in diagnosing ADHD and the subjective methods used, it's important that researchers investigate more accurate and objective measures of diagnosis. **TODO: add previous research on other predictive algorithms** 
+Given the difficulties in diagnosing ADHD and the subjective methods used, it's important that researchers investigate more accurate and objective measures of diagnosis. Previous research has already been conducted on using machine learning methods to classify ADHD on a variety of different data types. Researchers using Conners’ Adult ADHD Rating Scales (CAARS-S: S), which is a rating scale for ADHD symptoms present, applied a LightGBM algorithm to differentiate between ADHD, obesity, problematic gambling, and a control group (@christiansen_use_2020). They were able to achieve a global accuracy of 0.80 (@christiansen_use_2020). Another study applied extreme learning machine (ELM) and SVM algorithms to structural MRI data from the the ADHD-200 Global Competition, achieving a maximum accuracy of 90.18% using the ELM (@peng_extreme_2013). One study used data from the 2018–2019 National Survey of Children’s Health (@maniruzzaman_predicting_2022). After performing feature selection on the data, they applied eight classification algorithms, finding a highest accuracy of 85.5% using a random forest based classifier (@maniruzzaman_predicting_2022). Real-world clinical data featuring multiple psychiatric conditions has been used with a SVM classifier to predict if patients have ADHD with an accuracy of 66.1% (@mikolas_training_2022). Motor activity, specifically the motor activity dataset from HYPERAKTIV has also been used in previous studies (@10.1145/3458305.3478454, @kaur_accurate_2022). The studies used feature extraction and the other study used principal component analysis before applying machine learning methods, resulting in highest accuracies of 72% and 98.5% respectively (@10.1145/3458305.3478454, @kaur_accurate_2022). These studies suggest that applying machine learning to classify ADHD is possible.
 
-I will be continuing the research on predicting ADHD using machine learning methods. **TODO: add why im using activity data**
+I will be continuing the research on predicting ADHD using machine learning methods, focusing on time series classification algorithms applied to motor activity data. Actigraph data has been recognized as a potential tool for ADHD diagnoses (@10.1145/3458305.3478454). A study on circadian rhythm also found increased restlessness in sleep at the end of the night and increased activity in the afternoon for people with ADHD versus people without ADHD (@10.1145/3458305.3478454). A review of 24 studies on motor activity in children show that children with ADHD have higher average activity during structured sessions, similar sleep durations, and a moderately different sleep pattern compared to children without ADHD (@de_crescenzo_use_2016). These studies suggest that motor activity data has potential to be used as a classifier for ADHD. 
 
 
 # Methods
 
 ## Dataset
 
-**TODO: update, add more description**
+The dataset used in this paper is the HYPERAKTIV dataset, which contains time series activity and heart rate data for 85 subjects (@10.1145/3458305.3478454). Motor activity data was collected with Actiwatch (Cambridge Neurotechnology Ltd, England, model AW4) which is a wrist-worn actigraph. It records intensity, amount, and duration of movement in the x, y, and z-axes with a sampling frequency of 32 Hz. Activity data for 45 subjects with ADHD was recorded for 6.6 ± 1.3 days and 7.2 ± 0.9 days for the 40 controls. There are 103 subjects total, but only 85 recorded activity data. Heart rate was collected using Actiheart (Cambridge Neurotechnology Ltd, England), a chest-worn ECG monitor. It contains the raw data without correction of the time between beats in milliseconds. 80 out of the 103 subjects recorded heart rate data. 38 subjects with ADHD recorded heart rate data for an average of 20.5 ± 3.9 hours and 42 controls recorded heart rate data for 21 ± 4.3 hours. 
 
-I am planning to use a dataset called HYPERAKTIV, which has 103 subjects. It contains subjects’ sex, age, prescribed medications, which psychiatric disorders are diagnosed (including ADHD/ADD), and if substance abuse exists. For every subject it contains time series of motor activity and heart rate over a 24-hour period and the results of a neuropsychological computer test. Additionally, a paper was written on it that contains robust metadata and the researchers did some beginning exploratory work on the data using machine learning algorithms to predict ADHD. I intend to use the time series of motor activity and age, sex, psychiatric disorders and prescriptions medications to predict ADHD.
-
-I am planning to use a dataset called HYPERAKTIV, which has 103 subjects. It contains subjects’ sex, age, prescribed medications, which psychiatric disorders are diagnosed (including ADHD/ADD), and if substance abuse exists. For every subject it contains time series of motor activity and heart rate over a 24-hour period and the results of a neuropsychological computer test. Additionally, a paper was written on it that contains robust metadata and the researchers did some beginning exploratory work on the data using machine learning algorithms to predict ADHD. I intend to use the time series of motor activity and age, sex, psychiatric disorders and prescriptions medications to predict ADHD.
+In addition to the heart rate and motor activity data, the dataset also includes every patient’s 360 CPT-II test results along with the omission and commission errors, and the ADHD Confidence Index. There is also a dataset containing background information on each subject such as age, sex, type of medications prescribed, whether the patient was diagnosed with ADHD, if the ADD subtype was present, and other diagnosed psychiatric disorders. The psychiatric disorders were diagnosed by two experienced and certified psychiatrists for all patients using the Mini-International Neuropsychiatric Interview. Psychiatric disorder variables are: ADHD, ADD, BIPOLAR, UNIPOLAR, ANXIETY, potential substance abuse problems, and OTHER. Of the 85 people who recorded activity data there were 44 males and 41 females, 23 people 17-29 years old, 26 patients who were 30-39 years old, 24 who were 40-49 years old, and 14 who were 50-67 years old. Of the subjects who were diagnosed with ADHD 73% were not on medications and only one person was on stimulants (See Table 1 for more dataset variable breakdown). 
 
 
-[Contrast this to what would have been your ideal dataset. How did you arrive at choosing this dataset. Provide details on the dataset, size, gender split and count, age, how it was collected, ethical concerns, etc. Also provide details on data collection and access. Usually 100-200 words.]
+
+```{r,message=FALSE, echo=FALSE, warning=FALSE}
+library(tidyverse)
+patientInfo <- read.csv("../hyperaktiv/patient_info.csv", sep = ";")
+demographics <- data.frame(
+  Variable = c("Count", "Sex(m/f)", "Age(1/2/3/4)", "ADD", "UNIPOLAR", "BIPOLAR", "ANXIETY", "SUBSTANCE", "OTHER"),
+  ADHD = c("45", "24/21", "11/14/14/6", "23", "16", "16", "18", "12", "11"),
+  Control = c("40", "20/20", "12/12/10/6", "0", "10", "20", "26", "7", "16")
+)
+
+library(kableExtra)
+knitr::kable(demographics, label = "tab:CellCount Plugin Summary", align = "c", caption = "HYPERAKTIV Dataset Demographic Breakdown") %>%
+  footnote(general = "Ages were split into four categories: 1 = 17-29 years, 2 = 30-39 years, 3 = 40-49 years, and 4 = 50-67 years") %>%
+  kable_classic(full_width = F) 
+```
 
 ## Data Cleaning
 
-In the Hyperaktiv data set the time series data for each subject is stored in a separate CSV file. To analyze the data, I combined all of the activity CSVs into one file, keeping track of which subject each data point came from. *TODO: add more detail if needed* There were 108 subjects, yet only some had activity data. I only used subjects with activity data, which reduced the data set to 83. 
+In the Hyperaktiv data set the time series data for each subject is stored in a separate CSV file. To analyze the data, all of the individual activity .CSVs were combined into one data frame, keeping track of which subject each data point came from. There were 103 subjects, but only 83 subjects had activity data, which reduced the data set. The motor activity data was recorded for multiple days for each participant (6.6 ± 1.3 days for people with ADH and 7.2 ± 0.9 days for the controls). For every subject, the multiple day data was averaged so each subject had one 24 hour period of activity data with the an average activity data measurement for every hour. For time series classification models in the sktime package (@loning_sktimesktime_2022, @loning_sktime_nodate) the time series all need to be the same length. However, the activity for each subject is different in the HYPERAKTIV package since it is based on how active they were. Averaging the data into one 24 hour period also creates time series that are all the same length. The overall average activity data between people diagnosed with ADHD and people not diagnosed with ADHD is very similar and contains a lot of noise (see Fig. 1). To fix this, for each subject a rolling mean was applied to the data to get rid of the noise, the data points were differenced (each data point had the value before it subtracted from it), and then another rolling mean was applied to get rid of more noise. The overall averaged activity data between the groups is still similar (see Fig. 1).
 
-**TODO: comment on if I make all activity csvs same length, cleaning time series (seasonality, get rid of noise, etc.)**
+```{r, message=FALSE, warning=FALSE, echo=FALSE, fig.cap = "Average activity data for control and ADHD groups (left) and average activity data for control and ADHD groups after removing noise and trends in data (right)", fig.show='hold', out.width = "48%"}
+library(zoo)
+library(tidyverse)
+library(hms)
 
-**TODO: Add about heart rate if you get there**
+fnrollmean <- function (x) {
+  if (length(x) < 7) {
+    rep(NA,length(x)) 
+  } else {
+    vals <- rollmean(x,30,na.pad=TRUE)
+    vals2 <- rep(NA, 1440)
+    
+    for (i in 32:length(vals2)){
+  vals2[i] = vals[i-30] - vals[i-31]
+    }
+    vals2 <- vals2 %>%
+      rollmean(40, fill = NA)
+    return(vals2)
+  }
+}
 
+read_csv("../longActivityData2.csv") %>%
+  left_join(patientInfo, by = join_by("ID" == "ID")) %>%
+  mutate("ADHD" = as.factor(ADHD))  %>%
+  select(c("time", "activity", "ID", "ADHD")) %>%
+  mutate(years = parse_date_time(time,  "mdYHM")) %>%
+  mutate(hours = as_hms(years)) %>%
+  arrange((hours)) %>%
+  mutate(hours2 = hour(years)) %>%
+   mutate(minutes = minute(years)) %>%
+   group_by(hours, ID) %>%
+  summarise(avgAcc = mean(activity)) %>%
+  arrange(ID) %>%
+  left_join(patientInfo, by = join_by("ID" == "ID")) %>%
+  mutate("ADHD" = as.factor(ADHD))  %>%
+  select(c("hours", "avgAcc", "ID", "ADHD")) %>% 
+  group_by(ID) %>%
+  mutate(maxtime = max(hours)) %>%
+  group_by(ADHD) %>%
+  mutate(maxtime = min(maxtime)) %>%
+  group_by(ADHD, hours) %>%
+  summarize(values = mean(avgAcc)) %>%
+  ggplot(aes(hours, values, colour = ADHD, group = ADHD))+ 
+  geom_line()+
+  stat_smooth(method = "loess", formula = y ~ x, size = 1) +
+  theme_bw() +
+  xlab("Time") + ylab("Activity") +
+  theme(legend.position = "none")
+
+read_csv("../longActivityData2.csv") %>%
+  left_join(patientInfo, by = join_by("ID" == "ID")) %>%
+  mutate("ADHD" = as.factor(ADHD))  %>%
+  select(c("time", "activity", "ID", "ADHD")) %>%
+  mutate(years = parse_date_time(time,  "mdYHM")) %>%
+  mutate(hours = as_hms(years)) %>%
+  arrange((hours)) %>%
+  mutate(hours2 = hour(years)) %>%
+   mutate(minutes = minute(years)) %>%
+   group_by(hours, ID) %>%
+  summarise(avgAcc = mean(activity)) %>%
+  arrange(ID) %>%
+  left_join(patientInfo, by = join_by("ID" == "ID")) %>%
+  mutate("ADHD" = as.factor(ADHD))  %>%
+  select(c("hours", "avgAcc", "ID", "ADHD")) %>%
+  select(avgAcc, ID, ADHD) %>%
+  group_by(ID) %>%
+  mutate(rollavg=fnrollmean(avgAcc)) %>%
+  group_by(ID) %>%
+  mutate(maxtime = max(hours)) %>%
+  group_by(ADHD) %>%
+  mutate(maxtime = min(maxtime)) %>%
+  group_by(ADHD, hours) %>%
+  summarize(values = mean(rollavg)) %>%
+  ggplot(aes(hours, values, colour = ADHD, group = ADHD))+ 
+  geom_line()+
+  stat_smooth(method = "loess", formula = y ~ x, size = 1) +
+  theme_bw() +
+  xlab("Time") + ylab("Differnce in Activity Data") +
+  scale_color_discrete(name = "Group", labels = c("Control", "ADHD"))
+```
 
 
 ## Variables of Interest
 
-**TODO, also include summary stats of variables**
+This paper focuses on the time series activity data from the HYPERAKTIV data set. It contains data from a wrist-worn actipgrah, which measures gross motor activity, for 85 subjects for approximately one week of measurements (@10.1145/3458305.3478454). The length of each subject's activity data is different, depending on how active they were. The average number of activity data points was 9977.5 (sd = 1669.5, min = 3166, max = 14607). Most of the subjects had data around the same length as the average (see Fig. 1). In the HYPERAKTIV datset an actigrpah with a sampling frequency of 32 Hz was used and many movements over 0.05g were recorded (@10.1145/3458305.3478454). See Figure. 1 for the average motor activity for the ADHD and control groups over a 24 hour period. Confounding variables from the HYPERAKTIV demographic dataset such as sex, age, and other pyshiatric disorders were not included due to inability to include confounding variables in time series classification methods. 
 
-[Describe the variables that you are using in your datasets. Describe the rationale for using these variables. Varies in length.]
+```{r, message=FALSE, echo=FALSE, warning=FALSE, fig.cap = "Frequency of Length of Activity Data", out.width = "50%", fig.align = 'center'}
+library(tidyverse)
+# Histogram of time length 
+timeDist <- read_csv("timeLength.csv")
+
+ggplot(timeDist, aes(time)) +
+  geom_histogram(binwidth = 800) + 
+  theme_bw() + 
+  xlab("Number of Time Points") + ylab("Subject Count")
+```
+
 
 ## Other Important Features
 
-**TODO: Researchers did some preliminary ML on dataset - discuss**
-
-[Also comment on other things which are relevant to your research paper. Varies in length.]
+The HYPERAKTIV dataset has already been used to classify if people were diagnosed with ADHD based on motor activity data. The researchers who published HYPERAKTIV (@10.1145/3458305.3478454) did some exploratory analysis on the data. They used the tsfresh package to extract and select features from the motor activity data, and then applied machine learning algorithms and simple prediction algorithms to predict ADHD. The accuracies ranged from 58% to 72%. A subsequent paper applied principal component analysis (PCA) to the motor activity data from the HYPERAKTIV data set and then used six machine learning classification algorithms (@kaur_accurate_2022). They were able to achieve accuracies from 80.39% to 98.43%. Five out of the six algorithms used have a higher accuracy than the most common CPTs, which is about 85% (@gualtieri_adhd_2005). The best method from this paper for classifying ADHD based on motor activity was a principle component analysis followed by classification using a SVM machine learning algorithm, which achieved an accuracy of 98.43%, F-measure of 98.42%, recall of 98.33%, and precision of 98.56% (@kaur_accurate_2022).
 
 ## Data Analyses
 
-**TODO: this is info from draft, update with actual procedure taken**
+To investigate the research question if people with ADHD can be classified using motor activity, time series classification algorithms were applied to the HYPERAKTIV motor activity data after it had been processed to remove the trends and noise. Eight different classification algorithms from the sktime package (@loning_sktime_nodate, @loning_sktimesktime_2022) were applied including kernel based, dictionary based, distance based, and deep learning types. The data was split into training and testing groups (80% and 20% respectively) and the same training and testing splits were used for all algorithms. The algorithms used for analysis were IndividualTDE a temporal dictionary ensemble classifier, KNeighborsTimeSeriesClassifier an adapted KNeighborsClassifier for time series data, DummyClassifier a classifier that ignores input features, and TimeSeriesSVC a Support Vector Classifier for time series data. Other algorithms used were ROCKET which transforms time series using random convolutional kernels and then classifies it using RidgeClassifierCV, Arsenal which is an ensemble of ROCKET transformers, FCNClassifier a fully connected neural network classifier, and LSTMFCNClassifier a Long Short Term Memory Fully Convolutional Network classifier for time series data. All algorithms were used with the default parameters. These algorithms were selected because they work on the multivariate HYPERAKTIV activity data and represent a range of different types of time series classification algorithms.
 
-First, I will calculate summary statistics of the variables I’m using introductory data visualizations. It looks like to be compared, time series have to be the same length.  Since the data I am using is not all the same length, if I am unable to find a work-around I will have to preprocess the data by finding the mean of the lengths and then truncating the series that are too long and padding the ones that are too short.
-
-	My research question involves investigating if ADHD can be predicted using motor activity. I would like to try and use different time series classification algorithms to see if this can be predicted. I will start by using ROCKET and HIVE-COTE, which are ensemble classifiers based on the time series classification algorithms mentioned next. I will then try distance-based (KNN with dynamic time warping), interval-based (TimeSeriesForest), dictionary-based (BOSS, cBOSS), Frequency-based (RISE — like TimeSeriesForest but with other features), and shapelet-based (Shapelet Transform Classifier) algorithms and compare the results (accuracy, F1, sensitivity). 
-Before modeling of performing significance tests on the data, I will check if the data is stationary by using a Phillips-Perron Unit Root Test or by plotting the sample autocorrelation function. If it isn’t stationary I will remove the trends or seasonality from the data (trends: difference the data or perform least squares trend removal, seasonality: seasonal differencing, seasonal means, moving averages). To compare the two groups and see if there is a significant difference between them, I am going to try fitting a model to each group of the time series, use the model to simulate new data, and then run statistics on the simulated data. I am going to continue looking to see if there is a more direct method for comparing two groups of time series data.
-
-In addition to looking at the data as time series data, I could also try picking out features of the motor activity data and see if there is a significant difference between ADHD vs non-ADHD groups and if prediction is possible. I could pick out features such as averages, standard deviations, or number of peaks in the motor activity time series data. This would simplify the modeling, significance testing, and prediction algorithms steps since this data would be easier to use than time series data. It would also allow me to include confounding variables such as sex, age, and other psychiatric disorders because I have not yet found a way to include confounding variables in time series data. If I have time I could also include heart rate of people as a predictor variable in addition to motor activity to predict if people have ADHD or not. There has been some evidence of difference in heart rates between the two groups, so it could be beneficial to look at this (Hicks et al., 2021)
-
-
-[What analyses are you doing why. Varies in length.]
+After using the sktime time series classification algorithms for the predictions, Scikit-learn (@scikit-learn) was then used to obtain the accuracy, precision, recall, F1-score, and Matthews correlation coefficient for each algorithm, as recommended by the authors of the dataset (@10.1145/3458305.3478454). Accuracy is how many predictions the algorithm got right, precision measures how many positives were correct, and recall measures whether all the positive predictions were correctly identified. The F1-score measures a test’s accuracy, taking into account the precision and recall (@korstanje_f1_2021). Matthews correlation coefficient measures the difference between the predicted values and the actual values (@noauthor_matthewss_nodate).
 
 # Results
 
-[Summary of results analyses 1]
+```{r, message=FALSE, warning=FALSE, echo=FALSE}
+#patientInfo <- read.csv("../hyperaktiv/patient_info.csv", sep = ";")
+algorithms <- data.frame(
+  Algorithm = c("ROCKET", "IndividualTDE", "KNeighborsTimeSeriesClassifier", "DummyClassifier", "TimeSeriesSVC", "Arsenal", "FCNClassifier", "LSTMFCNClassifier"),
+  Accuracy = c("0.59", "0.18", "0.47", "0.59", "0.59", "0.59", "0.35", "0.41"),
+  Precision = c("0.59", "0.17", "0.55", "0.59", "0.59", "0.59", "0.45", "0.5"),
+  Recall = c("1.0", "0.1", "0.5", "1.0", "1.0", "1.0", "0.5", "0.3"),
+  F1Score = c("0.74", "0.13", "0.52", "0.74", "0.74", "0.74", "0.48", "0.37"),
+  Matthews = c("0,0", "-0.63", "-0.07", "0.0", "0.0", "0.0", "-0.37", "-0.13")
+)
 
-[Add visualizations from analyses. Varies in length.]
+knitr::kable(algorithms, label = "tab:CellCount Plugin Summary", align = "c", caption = "sktime Time Series Classification Algorithm Results") %>%
+  # footnote(general = "Ages were split into four categories: 1 = 17-29 years, 2 = 30-39 years, 3 = 40-49 years, and 4 = 50-67 years") %>%
+  kable_classic(full_width = F) 
+```
 
-[Summary of results analyses 2]
 
-[Add visualizations from analyses. Varies in length.]
+The results of the different classification algorithms are shown in Table. 2. After completing the analysis and results statistics, four of the algorithms (ROCKET, DummyClassifier, TimeSeriesSVC, Arsenal) have the same accuracy of 0.59, precision of 0.59, recall of 1.0, F1-score of 0.74, and Matthews correlation coefficient of 0.0. This is because they have all classified all of the subjects in the test data set as having ADHD. The remaining algorithms have a range of accuracy (0.18-0.47), precision (0.17-0.55), recall (0.1-0.5), F1-scores (1.3-0.52), and Matthews correlation coefficient (-0.63 - -0.07) but they are all very low.
 
 # Discussion
 
-* Talk about what the results mean
-* Depending on results - could have positive impact on diagnosing ADHD
-* Diagnosis in data is still coming from people - so still has subjectivity
-* Couldn’t include confounding variables??
-* Most practitioners don’t have the technical skill to do it themselves
+The motor activity data for ADHD people and non-ADHD people appear to be too similar for the sktime time series algorithms to be able to accurately classify them. The four algorithms with the highest accuracy, precision, recall, and F1-score (ROCKET, DummyClassifier, TimeSeriesSVC, Arsenal) classified all of the test subjects as having ADHD (See Table 2). Their scores are higher only because there were more subjects with ADHD in the test sample. Based on this observation, their accuracy, precision, recall, and F1-score would all be zero if there were no subjects with ADHD in a sample. These would not be valid classification methods since it appears they would classify all people as having ADHD. The remaining algorithms (IndividualTDE, KNeighborsTimeSeriesClassifier, FCNClassifier, LSTMFCMClassifier) all have very low accuracies (range of 0.18-0.47), precision (range of 0.17-0.55), recall (range of 0.1-0.5), and F1-scores (range of 1.3-0.52). Of these the KNeighborsTimeClassifier appears to be the best and has the highest accuracy, precision, recall, F1-score, and Matthews correlation coefficient. These results are too low to be useful classifiers for ADHD based on motor activity, so this method of time series preprocessing and algorithms appears not to be the best method and should not be used for diagnosing ADHD. The analysis done on the HYPERAKTIV data previously (tsfresh feature engineering and PCA followed by non-time series classification methods) were able to achieve more accurate results (@10.1145/3458305.3478454, @kaur_accurate_2022). The PCA and SVM based approach used previously appears to still be the best method (@kaur_accurate_2022). It outperformed all of the time series classification algorithms applied in this paper with an accuracy of 98.43%, F-measure of 98.42%, recall of 98.33%, and precision of 98.56% (@kaur_accurate_2022). If motor activity data were going to be used as a diagnostic method in a clinical setting, PCA processing them a SVM classification algorithm appears to be the most effective choice. 
 
+It is worth noting that certain procedures in this analysis could be improved. The preprocessing steps used in this paper such as simple moving averages and differencing data are generic time series preprocessing steps used across many different types of time series data. It is possible that more refined and preferable time series preprocessing exists for daily motor activity data to correctly identify the trends in the data that are important. The averages of activity data over a 24 hour period have a large peak in the middle of the day for subjects with and without ADHD (See Fig. 1). It is possible if this peak was correctly removed, there would be differences in motor activity between the two groups which the machine learning algorithms are able to identify. Additionally, for all of the algorithms in this paper, the default hyperparameters were used. If these hyperparameters were adjusted and optimized, it is possible it could produce more accurate results. Furthermore, possible confounding variables included in the demographic HYPERAKTIV data (@) were not included in the time series classification methods used in this paper due to difficulty including confounding variables in time series analysis. Preliminary research revealed limited methods for including confounding variables in time series classification. Time series machine learning classification algorithms should not be totally discounted, because it is possible that improved preprocessing of the data, optimization of the hyperparameters, and inclusion of confounding variables could lead to improved results.
 
-[Explain what your results mean in the context of the literature cited in the introduction. Minimum of 750 words.]
+The data used in the HYPERAKTIV data set is still diagnosed by people (@10.1145/3458305.3478454). Even if the diagnoses of ADHD and other psychiatric disorders were given by two expert, certified psychologists, this still means the diagnoses are coming from people and could contain some subjectivity. Using supervised machine learning methods it would be impossible to get rid of this subjectivity, since it requires labeled data to make classifications and predictions. To combat the subjectivity even more, unsupervised machine learning could be explored as an approach to diagnosing ADHD using motor activity data. This could remove the need for any human diagnosis, since unsupervised machine learning does not require labeled data. However, there are disadvantages to exploring unsupervised machine learning methods such as unpredictable results and there would be no way to verify if the conclusions were correct except by an expert, which would reintroduce subjectivity. 
+
+Another factor to consider is that machine learning classification methods for classifying ADHD based on motor activity is currently not currently a feasible diagnostic tool, even if the classification methods are accurate. Applying analysis methods such as feature extraction, PCA, or time series and non-time series classification algorithms is quite technologically advanced. For it to become a clinically applicable diagnostic tool, a tool or service would have to be devised to allow practitioners to more easily use these methods or have someone else use these methods for them. If a practitioner wanted to apply the analysis on motor activity themselves, they would have to use the HYPERAKTIV data to train the model or collect enough of their own activity data to train a model. Additionally, people being diagnosed would have to wear the motor activity monitor for about a week for it to be the same length as the HYPERAKTIV data, which is longer than other diagnoses methods used and may be a complication. The actigraph is worn at home, which could introduce measurement errors if subjects dont' use it properly. For classifying ADHD from motor activity data to become usable as a clinical diagnostic tool, there are first obstacles to overcome. 
 
 # Future Directions
 
-* Larger sample size
-* Combine with heart rate data
-* Could try on children
-* Make accessible to practitioners if it works
-* If I found another dataset, I could also explore if lifestyle factors (maybe things such as amount of exercise, level of satisfaction, income level, etc.) can be used to predict ADHD. 
-
-**TODO: change citation style**
-
-[How could someone continue the work? Around 150-200 words.]
+There are many future directions that research classifying ADHD with motor activity data (both with the HYPERAKTIV dataset and beyond) could take. The sample size of the HYPERAKTIV data set is small, with 103 participants and 85 participants with motor activity data. Another dataset of motor activity could be created with a larger sample size to reproduce the results and investigate if they are reproducible. The HYPERAKTIV motor activity data has only been analyzed alone and never in conjunction with the heart rate data (@10.1145/3458305.3478454, @kaur_accurate_2022). It would be interesting to analyze both of these datasets together, along with the demographic information of the dataset, and see how it impacts the results. The HYPERAKTIV dataset only contains data from adults (age 17-67). A possible future direction for study could be to record motor activity and heart rate data for children with and without ADHD and then analyze the data to see how it compares to the adults data and if similar classification methods can be used to predict the presence of ADHD using the activity data from children. Finally, making the best classification methods accessible to practitioners could be another direction of research. Most practitioners do not have the skill needed to apply any of the machine learning methods, so to use motor activity data as a diagnostic tool in a clinical setting a tool for practitioners would have to be produced.
 
 # Personal Reflection
 
+**TODO**
 [What was your original research question? Why did you have to deviate? What ideal dataset would be recommend collecting? How was this process of developing a research paper? 250 words]
 
 # Code availability
@@ -155,46 +245,4 @@ All analysis code for this article is available at: https://github.com/i-m-foste
 
 # Acknowledgements
 
-[Mention who you would like to thank. Any grants or people. Varies in length.]
-
-
-
-
-
-<!-- Bulleted lists look like this: -->
-
-<!-- * First bullet -->
-<!-- * Second bullet -->
-<!-- * Third bullet -->
-
-<!-- Numbered lists can be added as follows: -->
-
-<!-- 1. First item -->
-<!-- 2. Second item -->
-<!-- 3. Third item -->
-
-<!-- The text continues here. -->
-
-<!-- All figures and tables should be cited in the main text as Figure 1, Table 1, etc. -->
-
-<!-- \begin{figure}[H] -->
-<!-- \centering -->
-<!-- \includegraphics[width=3 cm]{logo-mdpi} -->
-<!-- \caption{This is a figure, Schemes follow the same formatting. If there are multiple panels, they should be listed as: (\textbf{a}) Description of what is contained in the first panel. (\textbf{b}) Description of what is contained in the second panel. Figures should be placed in the main text near to the first time they are cited. A caption on a single line should be centered.} -->
-<!-- \end{figure} -->
-
-
-<!-- \begin{table}[H] -->
-<!-- \caption{This is a table caption. Tables should be placed in the main text near to the first time they are cited.} -->
-<!-- \centering -->
-<!-- %% \tablesize{} %% You can specify the fontsize here, e.g.  \tablesize{\footnotesize}. If commented out \small will be used. -->
-<!-- \begin{tabular}{ccc} -->
-<!-- \toprule -->
-<!-- \textbf{Title 1}	& \textbf{Title 2}	& \textbf{Title 3}\\ -->
-<!-- \midrule -->
-<!-- entry 1		& data			& data\\ -->
-<!-- entry 2		& data			& data\\ -->
-<!-- \bottomrule -->
-<!-- \end{tabular} -->
-<!-- \end{table} -->
-
+Thank you to my instructor Rosie Dutt and my classmates for their knowledge, insight, and support.

@@ -7,17 +7,225 @@ output: html_document
 
 ```{r}
 library(tidyverse)
+library(hms)
+```
+
+# preliminary data vizualizations and analysis
+
+```{r}
+timeSeries <- read_csv("longActivityData2.csv") %>%
+  left_join(patientInfo, by = join_by("ID" == "ID")) %>%
+  mutate("ADHD" = as.factor(ADHD))  %>%
+  select(c("time", "activity", "ID", "ADHD")) %>%
+  mutate(years = parse_date_time(time,  "mdYHM")) %>%
+  mutate(hours = as_hms(years))
 ```
 
 ```{r}
-timeSeries <- read.csv("hyperaktiv/activity_data/patient_activity_05.csv", sep = ";")
+timeSeries2 <- read.csv("hyperaktiv/activity_data/patient_activity_02.csv", sep = ";") %>%
+  mutate("ID" = 2) %>%
+  mutate("ADHD" = as.factor(1))
+```
+
+
+```{r}
+library(openair)
+library(lubridate)
+```
+
+
+```{r}
+oneSeries <- read.csv("hyperaktiv/activity_data/patient_activity_08.csv", sep = ";") %>%
+  mutate("ID" = 8) %>%
+  mutate("ADHD" = as.factor(0)) %>%
+  mutate(years = parse_date_time(TIMESTAMP,  "mdYHM")) %>%
+  mutate(hours = as_hms(years)) %>%
+  arrange((hours)) %>%
+  mutate(hours2 = hour(years)) %>%
+   mutate(minutes = minute(years)) 
+
+oneSeries <- oneSeries %>%
+   group_by(hours, .drop = FALSE) %>%
+  summarise(avgAcc = mean(ACTIVITY))
+
+library(pracma)
+library(zoo)
+library(forecast)
+library(TTR)
+
+oneSeries2 <- oneSeries %>%
+  ma(order = 15)
+
+
+
+oneSeries %>%
+  ggplot(aes(hours, avgAcc, group = 1))+ 
+  geom_line()+
+  stat_smooth(method = "loess", formula = y ~ x, size = 1)
 ```
 
 ```{r}
-ggplot(timeSeries, aes(x = TIMESTAMP, y = ACTIVITY, group = 1)) + geom_point() + geom_line()
+oneSeries3 <- oneSeries['avgAcc'] %>%
+  rollmean(30, fill = NA)
+
+bind <- cbind(oneSeries3, oneSeries['hours'])
+
+bind %>%
+  ggplot(aes(hours, avgAcc, group = 1))+ 
+  geom_line()+
+  stat_smooth(method = "loess", formula = y ~ x, size = 1)
 ```
+
+```{r}
+oneSeries4 <- oneSeries['avgAcc'] %>%
+  rollmean(30)
+
+values <- oneSeries4[,1]
+values2 <- rep(0, 1410)
+
+for (i in 2:length(values)){
+  values2[i] = values[i] - values[i-1]
+}
+bind2 <- cbind(values, oneSeries[30:1440,'hours'])
+plot(values2)
+
+values3 <- rep(0, 1409)
+for (i in 2:length(values2)){
+  values3[i] = values2[i] - values2[i-1]
+}
+```
+
+
+```{r}
+plot(values3)
+
+bind <- cbind(values2, oneSeries[30:1440,'hours'])
+
+bind %>%
+  ggplot(aes(hours, values3, group = 1))+ 
+  geom_line()+
+  stat_smooth(method = "loess", formula = y ~ x, size = 1)
+```
+
+
+```{r}
+bind3 <- values3 %>%
+  rollmean(100, fill = NA)
+plot(bind3)
+
+bind <- cbind(bind3, oneSeries[30:1440,'hours'])
+
+bind %>%
+  ggplot(aes(hours, bind3, group = 1))+ 
+  geom_line()+
+  stat_smooth(method = "loess", formula = y ~ x, size = 1)
+```
+
+
+```{r}
+plot(oneSeries3)
+```
+
+
+```{r}
+p=5
+plot(rollmean(oneSeries['avgAcc'],p),main='Simple vs Triangular Moving Average',ylab='Discoveries')
+#lines(rollmean(oneSeries['avgAcc'],10),col='red')
+lines(rollmean(rollmean(oneSeries['avgAcc'],8),8),col='red')
+legend(1935,8,col=c('black','red','blue'),legend=c('SMA 5', 'SMA 10','TMA 5'),lty=1,cex=0.8)
+```
+
+
+```{r}
+timeseries2 <- read_csv("longActivityData2.csv") %>%
+  left_join(patientInfo, by = join_by("ID" == "ID")) %>%
+  mutate("ADHD" = as.factor(ADHD))  %>%
+  select(c("time", "activity", "ID", "ADHD")) %>%
+  mutate(years = parse_date_time(time,  "mdYHM")) %>%
+  mutate(hours = as_hms(years)) %>%
+  arrange((hours)) %>%
+  mutate(hours2 = hour(years)) %>%
+   mutate(minutes = minute(years)) 
+
+timeseries3 <- timeseries2 %>%
+   group_by(hours, ID) %>%
+  summarise(avgAcc = mean(activity)) %>%
+  arrange(ID) %>%
+  left_join(patientInfo, by = join_by("ID" == "ID")) %>%
+  mutate("ADHD" = as.factor(ADHD))  %>%
+  select(c("hours", "avgAcc", "ID", "ADHD")) 
+```
+
+```{r}
+timeseries3 %>% 
+  group_by(ID) %>%
+  mutate(maxtime = max(hours)) %>%
+  group_by(ADHD) %>%
+  mutate(maxtime = min(maxtime)) %>%
+  group_by(ADHD, hours) %>%
+  summarize(values = mean(avgAcc)) %>%
+  ggplot(aes(hours, values, colour = ADHD, group = ADHD))+ 
+  geom_line()+
+  stat_smooth(method = "loess", formula = y ~ x, size = 1) +
+  #geom_smooth() + 
+  facet_wrap(.~ADHD)
+```
+
+
+```{r}
+write.csv(timeseries3, "timeAvg.csv")
+```
+
+
+```{r}
+timeSeries4 <- read.csv("hyperaktiv/activity_data/patient_activity_09.csv", sep = ";") %>%
+  mutate("ID" = 9) %>%
+  mutate("ADHD" = as.factor(0))
+```
+
 
 ```{r}
 patientInfo <- read.csv("hyperaktiv/patient_info.csv", sep = ";")
 ```
+
+```{r}
+longDF <- read_csv("longActivityData2.csv")
+```
+
+```{r}
+newDF <- newDF %>%
+  mutate(years = parse_date_time(TIMESTAMP,  "mdYHM")) %>%
+  mutate(hours = strftime(years, format="%H:%M:%S"))
+```
+
+
+```{r}
+timeSeries %>% 
+  group_by(ID) %>%
+  mutate(maxtime = max(hours)) %>%
+  group_by(ADHD) %>%
+  mutate(maxtime = min(maxtime)) %>%
+  group_by(ADHD, hours) %>%
+  summarize(values = mean(activity)) %>%
+  ggplot(aes(hours, values, colour = ADHD, group = ADHD))+ 
+  geom_line()+
+  stat_smooth(method = "loess", formula = y ~ x, size = 1) +
+  geom_smooth() + 
+  facet_wrap(.~ADHD)
+```
+
+
+```{r}
+timeDist <- read_csv("timeLength.csv")
+```
+
+
+
+```{r}
+ggplot(timeDist, aes(time)) +
+  geom_histogram(binwidth = 800) + 
+  theme_bw() + 
+  xlab("Number of Time Points") + ylab("Subject Count")
+```
+
 

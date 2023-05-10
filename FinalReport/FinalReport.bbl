@@ -60,4 +60,115 @@ Stanborough, R.J.
 \newblock What to {Know} {About} {Adult} {ADHD} {Diagnosis}.
 \newblock \url{https://www.healthline.com/health/adult-adhd-diagnosis},  2022.
 
+\bibitem[Christiansen \em{et~al.}(2020)Christiansen, Chavanon, Hirsch, Schmidt,
+  Meyer, Müller, Rumpf, Grigorev, and Hoffmann]{christiansen_use_2020}
+Christiansen, H.; Chavanon, M.L.; Hirsch, O.; Schmidt, M.H.; Meyer, C.;
+  Müller, A.; Rumpf, H.J.; Grigorev, I.; Hoffmann, A.
+\newblock Use of machine learning to classify adult {ADHD} and other conditions
+  based on the {Conners}’ {Adult} {ADHD} {Rating} {Scales}.
+\newblock {\em Scientific Reports} {\bf 2020}, {\em 10},~18871.
+\newblock Number: 1 Publisher: Nature Publishing Group,
+  doi:{\changeurlcolor{black}\href{https://doi.org/10.1038/s41598-020-75868-y}{\detokenize{10.1038/s41598-020-75868-y}}}.
+
+\bibitem[Peng \em{et~al.}(2013)Peng, Lin, Zhang, and Wang]{peng_extreme_2013}
+Peng, X.; Lin, P.; Zhang, T.; Wang, J.
+\newblock Extreme {Learning} {Machine}-{Based} {Classification} of {ADHD}
+  {Using} {Brain} {Structural} {MRI} {Data}.
+\newblock {\em PLOS ONE} {\bf 2013}, {\em 8},~e79476.
+\newblock Publisher: Public Library of Science,
+  doi:{\changeurlcolor{black}\href{https://doi.org/10.1371/journal.pone.0079476}{\detokenize{10.1371/journal.pone.0079476}}}.
+
+\bibitem[Maniruzzaman \em{et~al.}(2022)Maniruzzaman, Shin, and
+  Hasan]{maniruzzaman_predicting_2022}
+Maniruzzaman, M.; Shin, J.; Hasan, M.A.M.
+\newblock Predicting {Children} with {ADHD} {Using} {Behavioral} {Activity}:
+  {A} {Machine} {Learning} {Analysis}.
+\newblock {\em Applied Sciences} {\bf 2022}, {\em 12},~2737.
+\newblock Number: 5 Publisher: Multidisciplinary Digital Publishing Institute,
+  doi:{\changeurlcolor{black}\href{https://doi.org/10.3390/app12052737}{\detokenize{10.3390/app12052737}}}.
+
+\bibitem[Mikolas \em{et~al.}(2022)Mikolas, Vahid, Bernardoni, Süß, Martini,
+  Beste, and Bluschke]{mikolas_training_2022}
+Mikolas, P.; Vahid, A.; Bernardoni, F.; Süß, M.; Martini, J.; Beste, C.;
+  Bluschke, A.
+\newblock Training a machine learning classifier to identify {ADHD} based on
+  real-world clinical data from medical records.
+\newblock {\em Scientific Reports} {\bf 2022}, {\em 12},~12934.
+\newblock Number: 1 Publisher: Nature Publishing Group,
+  doi:{\changeurlcolor{black}\href{https://doi.org/10.1038/s41598-022-17126-x}{\detokenize{10.1038/s41598-022-17126-x}}}.
+
+\bibitem[Hicks \em{et~al.}(2021)Hicks, Stautland, Fasmer, F\o{}rland, Hammer,
+  Halvorsen, Mjeldheim, Oedegaard, Osnes, Gi\ae{}ver~Syrstad, Riegler, and
+  Jakobsen]{10.1145/3458305.3478454}
+Hicks, S.A.; Stautland, A.; Fasmer, O.B.; F\o{}rland, W.; Hammer, H.L.;
+  Halvorsen, P.; Mjeldheim, K.; Oedegaard, K.J.; Osnes, B.; Gi\ae{}ver~Syrstad,
+  V.E.; Riegler, M.A.; Jakobsen, P.
+\newblock HYPERAKTIV: An Activity Dataset from Patients with
+  Attention-Deficit/Hyperactivity Disorder (ADHD).
+\newblock  Proceedings of the 12th ACM Multimedia Systems Conference;
+  Association for Computing Machinery: New York, NY, USA,  2021; MMSys '21, p.
+  314–319.
+\newblock
+  doi:{\changeurlcolor{black}\href{https://doi.org/10.1145/3458305.3478454}{\detokenize{10.1145/3458305.3478454}}}.
+
+\bibitem[Kaur and Kahlon(2022)]{kaur_accurate_2022}
+Kaur, A.; Kahlon, K.S.
+\newblock Accurate {Identification} of {ADHD} among {Adults} {Using}
+  {Real}-{Time} {Activity} {Data}.
+\newblock {\em Brain Sciences} {\bf 2022}, {\em 12},~831.
+\newblock
+  doi:{\changeurlcolor{black}\href{https://doi.org/10.3390/brainsci12070831}{\detokenize{10.3390/brainsci12070831}}}.
+
+\bibitem[De~Crescenzo \em{et~al.}(2016)De~Crescenzo, Licchelli, Ciabattini,
+  Menghini, Armando, Alfieri, Mazzone, Pontrelli, Livadiotti, Foti, Quested,
+  and Vicari]{de_crescenzo_use_2016}
+De~Crescenzo, F.; Licchelli, S.; Ciabattini, M.; Menghini, D.; Armando, M.;
+  Alfieri, P.; Mazzone, L.; Pontrelli, G.; Livadiotti, S.; Foti, F.; Quested,
+  D.; Vicari, S.
+\newblock The use of actigraphy in the monitoring of sleep and activity in
+  {ADHD}: {A} meta-analysis.
+\newblock {\em Sleep Medicine Reviews} {\bf 2016}, {\em 26},~9--20.
+\newblock
+  doi:{\changeurlcolor{black}\href{https://doi.org/10.1016/j.smrv.2015.04.002}{\detokenize{10.1016/j.smrv.2015.04.002}}}.
+
+\bibitem[Löning \em{et~al.}(2022)Löning, Király, Bagnall, Middlehurst,
+  Ganesh, Oastler, Lines, Walter, ViktorKaz, Mentel, chrisholder, Tsaprounis,
+  RNKuhns, Parker, Owoseni, Rockenschaub, danbartl, jesellier, eenticott shell,
+  Gilbert, Bulatova, Lovkush, Schäfer, Khrapov, Buchhorn, Take, Subramanian,
+  Meyer, AidenRushbrooke, and rice]{loning_sktimesktime_2022}
+Löning, M.; Király, F.; Bagnall, T.; Middlehurst, M.; Ganesh, S.; Oastler,
+  G.; Lines, J.; Walter, M.; ViktorKaz.; Mentel, L.; chrisholder.; Tsaprounis,
+  L.; RNKuhns.; Parker, M.; Owoseni, T.; Rockenschaub, P.; danbartl.;
+  jesellier.; eenticott shell.; Gilbert, C.; Bulatova, G.; Lovkush.; Schäfer,
+  P.; Khrapov, S.; Buchhorn, K.; Take, K.; Subramanian, S.; Meyer, S.M.;
+  AidenRushbrooke.; rice, B.
+\newblock sktime/sktime: v0.13.4,  2022.
+\newblock
+  doi:{\changeurlcolor{black}\href{https://doi.org/10.5281/zenodo.7117735}{\detokenize{10.5281/zenodo.7117735}}}.
+
+\bibitem[Löning \em{et~al.}()Löning, Bagnall, Ganesh, and
+  Kazakov]{loning_sktime_nodate}
+Löning, M.; Bagnall, A.; Ganesh, S.; Kazakov, V.
+\newblock sktime: {A} {Uniﬁed} {Interface} for {Machine} {Learning} with
+  {Time} {Series}.
+
+\bibitem[Pedregosa \em{et~al.}(2011)Pedregosa, Varoquaux, Gramfort, Michel,
+  Thirion, Grisel, Blondel, Prettenhofer, Weiss, Dubourg, Vanderplas, Passos,
+  Cournapeau, Brucher, Perrot, and Duchesnay]{scikit-learn}
+Pedregosa, F.; Varoquaux, G.; Gramfort, A.; Michel, V.; Thirion, B.; Grisel,
+  O.; Blondel, M.; Prettenhofer, P.; Weiss, R.; Dubourg, V.; Vanderplas, J.;
+  Passos, A.; Cournapeau, D.; Brucher, M.; Perrot, M.; Duchesnay, E.
+\newblock Scikit-learn: Machine Learning in {P}ython.
+\newblock {\em Journal of Machine Learning Research} {\bf 2011}, {\em
+  12},~2825--2830.
+
+\bibitem[Korstanje(2021)]{korstanje_f1_2021}
+Korstanje, J.
+\newblock The {F1} score,  2021.
+
+\bibitem[noa()]{noauthor_matthewss_nodate}
+Matthews’s correlation coefficient: {Definition}, {Formula} and advantages -
+  {Voxco}.
+\newblock Section: Blog.
+
 \end{thebibliography}
