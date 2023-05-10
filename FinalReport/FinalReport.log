@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.3.3)  9 MAY 2023 22:12
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.3.3)  9 MAY 2023 22:48
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -985,7 +985,7 @@ File: FinalReport_files/figure-latex/unnamed-chunk-3-1.pdf Graphic file (type pd
 <use FinalReport_files/figure-latex/unnamed-chunk-3-1.pdf>
 Package pdftex.def Info: FinalReport_files/figure-latex/unnamed-chunk-3-1.pdf  used on input line 460.
 (pdftex.def)             Requested size: 221.9316pt x 153.64505pt.
-[5 <./FinalReport_files/figure-latex/unnamed-chunk-3-1.pdf>] [6] [7] (./FinalReport.bbl
+[5 <./FinalReport_files/figure-latex/unnamed-chunk-3-1.pdf>] [6] [7] (./FinalReport.bbl [8]
 Underfull \hbox (badness 10000) in paragraph at lines 51--57
 []\T1/ppl/m/n/9 (+20) Dalsgaard, S.; Hum-lum, M.K.; Nielsen, H.S.; Si-mon-sen, M.  Rel-a-tive stan-dards in
  []
@@ -995,15 +995,15 @@ Underfull \hbox (badness 2961) in paragraph at lines 51--57
 \T1/ppl/m/n/9 (+20) ADHD di-ag-noses: The role of spe-cial-ist be-hav-ior.  \T1/ppl/m/it/9 (+20) Eco-nomics Let-ters \T1/ppl/b/n/9 (+20) 2012\T1/ppl/m/n/9 (+20) , \T1/ppl/m/it/9 (+20) 117\T1/ppl/m/n/9 (+20) , 663--665.
  []
 
-[8]) 
+) 
 AED: lastpage setting LastPage
 
-Underfull \hbox (badness 1867) in paragraph at lines 769--769
+Underfull \hbox (badness 1867) in paragraph at lines 794--794
   \TS1/ppl/m/n/9 (+20) © \T1/ppl/m/n/9 (+20) 2023 by the au-thors. Sub-mit-ted to \T1/ppl/m/it/9 (+20) Jour-nal Not Spec-i-fied \T1/ppl/m/n/9 (+20) for pos-si-ble open ac-cess pub-li-ca-tion
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 769--769
+Underfull \hbox (badness 10000) in paragraph at lines 794--794
 \T1/ppl/m/n/9 (+20) un-der the terms and con-di-tions of the Cre-ative Com-mons At-tri-bu-tion (CC BY) li-cense
  []
 
@@ -1021,9 +1021,9 @@ Here is how much of TeX's memory you used:
  47979 multiletter control sequences out of 15000+600000
  565021 words of font info for 326 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 99i,12n,94p,2397b,632s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 99i,12n,94p,2397b,618s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <c:/Users/ifoster25/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecss0800.375pk>{c:/Users/ifoster25/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/base/8r.enc}<c:/Users/ifoster25/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmbsy10.pfb><c:/Users/ifoster25/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb><c:/Users/ifoster25/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb><c:/Users/ifoster25/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on FinalReport.pdf (9 pages, 190040 bytes).
+Output written on FinalReport.pdf (9 pages, 191322 bytes).
 PDF statistics:
  357 PDF objects out of 1000 (max. 8388607)
  308 compressed objects within 4 object streams
