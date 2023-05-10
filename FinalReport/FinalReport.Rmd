@@ -236,8 +236,10 @@ There are many future directions that research classifying ADHD with motor activ
 
 # Personal Reflection
 
-**TODO**
-[What was your original research question? Why did you have to deviate? What ideal dataset would be recommend collecting? How was this process of developing a research paper? 250 words]
+My research question has changed quite a bit over the semester. I originally wanted to investigate the intersection between psychiatric disorders and the gut microbiome, but I had to change my research question due to limited storage space and large datasets. I then pivoted to classifying whether people have ADHD based on motor activity data. I used the HYPERAKTIV data set, which I thought was well curated and very complete. The only disadvantages were that it had only 85 subjects with activity data and the lengths of all the activity data was different. Having different length activity data made analysis more difficult, as it seems that same length data is required for the algorithms I used. However, due to the nature of collecting activity data whenever someone is moving, I don’t know how this problem would be avoided. 
+
+Overall, I enjoyed the process of developing a research paper and found it beneficial to my education. I’ve never written an entire research paper by myself before and I learned a lot about writing and data analysis. I have also never applied machine learning methods myself or done any time series analysis before this paper. This was more challenging than I expected, and I did not achieve as much analysis as I was hoping due to my concussion and obstacles arising during data wrangling and analysis. Part of the reason they were so challenging is that time series classification algorithms are niche so there was limited documentation and examples to turn to when I ran into a problem. There are a few algorithms that I was unable to get working due to being unable to understand the error message. Also, I had to re-wrangle the data multiple times to get it in the right format due to its challenging shape. However, overall I am proud of what I was able to achieve and learn, even if the results were not significant. 
+
 
 # Code availability
 
